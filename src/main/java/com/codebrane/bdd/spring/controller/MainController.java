@@ -1,5 +1,6 @@
 package com.codebrane.bdd.spring.controller;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MainController {
+
+	private static final Logger logger = Logger.getLogger(MainController.class);
 
 	// http://localhost:8080/bdd
 	@RequestMapping("/")
@@ -20,6 +23,7 @@ public class MainController {
 	public String doModelTest(@RequestParam("firstAttributeValue") String firstAttributeValue,
 													  @RequestParam("secondAttributeValue") String secondAttributeValue,
 													  Model model) {
+		logger.info("modeltest requested");
 		model.addAttribute("firstAttributeName", firstAttributeValue);
 		model.addAttribute("secondAttributeName", secondAttributeValue);
     model.addAttribute("thirdAttributeName", getInternalAttribute());
