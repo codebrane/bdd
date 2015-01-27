@@ -5,6 +5,20 @@
 
 	<display-name>BDD Testing Application</display-name>
 
+	<context-param>
+		<param-name>webAppRootKey</param-name>
+		<param-value>bdd.root</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>log4jConfigLocation</param-name>
+		<param-value>/WEB-INF/classes/log4j.properties</param-value>
+	</context-param>
+
+	<listener>
+		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+	</listener>
+
 	<servlet>
 		<servlet-name>dispatcherServlet</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
