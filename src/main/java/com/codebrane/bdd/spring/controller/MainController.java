@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Locale;
+
 @Controller
 public class MainController {
 
@@ -20,10 +22,11 @@ public class MainController {
 
 	// http://localhost:8080/bdd/modeltest?firstAttributeValue=123&secondAttributeValue=abc
 	@RequestMapping(value = "/modeltest", method = RequestMethod.GET)
-	public String doModelTest(@RequestParam("firstAttributeValue") String firstAttributeValue,
+	public String doModelTest(Locale locale,
+														@RequestParam("firstAttributeValue") String firstAttributeValue,
 													  @RequestParam("secondAttributeValue") String secondAttributeValue,
 													  Model model) {
-		logger.info("modeltest requested");
+		logger.info("modeltest requested with locale : " + locale.getLanguage());
 		model.addAttribute("firstAttributeName", firstAttributeValue);
 		model.addAttribute("secondAttributeName", secondAttributeValue);
     model.addAttribute("thirdAttributeName", getInternalAttribute());
